@@ -3,7 +3,7 @@ const router = express.Router()
 const Document = require('../models/Document')
 
 router.get('/Requests', (req, res, next) => {
-    req.app.locals.db.collection('documents').find().sort({title: 1}).limit(10).toArray((err, result) => {
+    req.app.locals.db.collection('documents').find().sort({"newDocument.title": -1}).limit(10).toArray((err, result) => {
         if (err) {
           res.status(400).send({'error': err})
         }
