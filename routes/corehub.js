@@ -3,7 +3,7 @@ const router = express.Router()
 const Document = require('../models/Document')
 
 router.get('/Requests', (req, res, next) => {
-    req.app.locals.db.collection('documents').find({}).toArray((err, result) => {
+    req.app.locals.db.collection('documents').find().sort({title: 1}).limit(10).toArray((err, result) => {
         if (err) {
           res.status(400).send({'error': err})
         }
@@ -29,7 +29,7 @@ router.post('/Logon/UserLogin', (req, res, next) => {
       }
       var ret = `
       {
-        "Code": 200,
+        "Code": 0,
         "Message": "Success",
         "Value": {
           "ServiceUri": "test",
@@ -56,7 +56,7 @@ router.post('/Logon/UserLogin', (req, res, next) => {
       }
       var ret = `
       {
-        "Code": 200,
+        "Code": 2,
         "Message": "Success"
       }
       `
