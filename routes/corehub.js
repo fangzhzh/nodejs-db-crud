@@ -5,7 +5,7 @@ const Document = require('../models/Document')
 router.get('/Requests', (req, res, next) => {
   console.log("get Requests")
   var limit = (req.query.limit ? parseInt(req.query.limit) : 10)
-    req.app.locals.db.collection('documents').find().sort({"newDocument.title": -1}).limit(limit).toArray((err, result) => {
+    req.app.locals.db.collection('documents').find().sort({"newDocument.updatetime": -1, "newDocument.title": -1}).limit(limit).toArray((err, result) => {
         if (err) {
           res.status(400).send({'error': err})
         }

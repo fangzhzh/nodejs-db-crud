@@ -3,5 +3,6 @@ module.exports = class Document {
     this.title = title
     this.username = username
     this.body = body
+    this.updatetime = new Date().getTime()
   }
 }
